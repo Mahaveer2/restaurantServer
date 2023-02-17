@@ -27,6 +27,8 @@ export const createProducts = () => {
           description:"Premium subscription package",
         }
       ]);
+    }else if(count > 3){
+      productSchema.deleteMany({},() => {});
     }
   })
   

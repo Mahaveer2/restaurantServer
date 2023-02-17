@@ -2,7 +2,6 @@ import { productSchema } from "../models/models.js"
 
 export const createProducts = () => {
   productSchema.countDocuments({}).exec((err,count) => {
-    console.log(count)
     if(count == 0){
       productSchema.create([
         {

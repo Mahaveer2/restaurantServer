@@ -29,6 +29,7 @@ export const createProducts = () => {
       ]);
     }else if(count > 3){
       productSchema.deleteMany({},() => {});
+      createProducts();
     }
   })
   

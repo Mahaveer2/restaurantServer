@@ -78,10 +78,11 @@ const postOrder = async (req, res) => {
 const getSubscription = async (req,res) => {
   const { email } = req.body;
   const data = await orderSchema.find({email:email});
-  const product = await productSchema.find({id:data[0].product})
   if( data.length == 0){
     return res.status(200).json({isSubscribed:false});
   }
+  
+  const product = await productSchema.find({id:data[0].product})
   return res.status(200).json({data:data,isSubscribed:true,product:product});
 }
 

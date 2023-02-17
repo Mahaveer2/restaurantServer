@@ -5,9 +5,22 @@ import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import aiRoutes from "./routes/openai.routes.js";
 import { createProducts } from "./utils/createProducts.js";
+import config from "config";
 
 const app = express();
-app.use(cors());
+
+const whitelist = ['http://localhost:5173',config.get("WEBSITE")]
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error())
+    }
+  }
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/users",userRoutes);
 app.use("/orders",orderRoutes);

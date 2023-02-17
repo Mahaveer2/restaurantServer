@@ -1,6 +1,6 @@
 {
   "JWT_SECRET":"SECRET@!#skuy-213123",
   "STRIPE_SECRET":"sk_test_51LAuimFbuSFlLnppTnha6HdHyx4mxIxYwClTjghda3eLEjGdEERkvC3ShefYcR4LsPWL1zv87zo8Mx3U5nJoNTn900Ka65jdx6",
-  "WEBSITE":"http://localhost:5173/",
+  "WEBSITE":"https://therestaurantai.vercel.app/",
   "OPENAI_SECRET":"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"
 }

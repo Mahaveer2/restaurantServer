@@ -43,6 +43,12 @@ const postOrder = async (req, res) => {
   const createdAt = moment();
   const expiry = moment().add(30, 'days');
 
+  const session = await stripe.checkout.sessions.retrieve(session_id);
+
+  if(!session){
+    return res.status(500).json({message:"Session is invalid or expired!"}); 
+  }
+
 
   if(session_id == "" || email == "" || productId == ""){
     return res.status(500).json({message:"error fields are required!"});

@@ -17,7 +17,7 @@ const getProduct = async (req,res) => {
 const orderController = async (req,res) => {
   const { priceId ,customerId,productId } = req.body;
   try {
-    const url = config.get("DEV") ? "https://localhost:5173/" : config.get("WEBSITE");
+    const url = config.get("DEV") ? "http://localhost:5173/" : config.get("WEBSITE");
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
 
@@ -48,7 +48,7 @@ const postOrder = async (req, res) => {
     return res.status(500).json({message:"error fields are required!"});
   }
 
-  const alreadyExists = await orderSchema.findOne({productId:productId});
+  const alreadyExists = await orderSchema.findOne({session_id:session_id});
 
   if(alreadyExists){
     return res.status(200).json({message:"subscription already exists!"});
@@ -79,12 +79,21 @@ const postOrder = async (req, res) => {
 const getSubscription = async (req,res) => {
   const { email } = req.body;
   const data = await orderSchema.find({email:email});
+  let orders = [];
   if( data.length == 0){
     return res.status(200).json({isSubscribed:false});
   }
+
+  data.forEach(order => {
+    if( moment() > order.expiresOn){
+      return res.status(200).json({isSubscribed:false});
+    }else{
+      orders.push(order);
+    }
+  })
   
-  const product = await productSchema.find({id:data[0].product})
-  return res.status(200).json({data:data,isSubscribed:true,product:product});
+  const product = await productSchema.find({id:orders[0].product})
+  return res.status(200).json({data:orders,isSubscribed:true,product:product});
 }
 
 export {orderController,postOrder,getSubscription,getProduct};

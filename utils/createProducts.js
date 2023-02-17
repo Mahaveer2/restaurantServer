@@ -3,7 +3,7 @@ import { productSchema } from "../models/models.js"
 export const createProducts = () => {
   productSchema.deleteMany({},() => {})
   productSchema.countDocuments({}).exec((err,count) => {
-    if(count < 3){
+    if(count == 0){
       productSchema.create([
         {
           id:"price_1McDIDFbuSFlLnppYnVeZAr3",

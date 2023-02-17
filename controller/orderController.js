@@ -17,6 +17,7 @@ const getProduct = async (req,res) => {
 const orderController = async (req,res) => {
   const { priceId ,customerId,productId } = req.body;
   try {
+    const url = config.get("DEV") ? "https://localhost:5173/" : config.get("WEBSITE");
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
 
@@ -27,8 +28,8 @@ const orderController = async (req,res) => {
         },
       ],
 
-      success_url: config.get('WEBSITE')+`checkout?session_id={CHECKOUT_SESSION_ID}&productId=${productId}`,
-      cancel_url: config.get('WEBSITE')+'checkout?fail=true',
+      success_url: url+`checkout?session_id={CHECKOUT_SESSION_ID}&productId=${productId}`,
+      cancel_url: url+'checkout?fail=true',
     });
     return res.status(200).json({ session });
 

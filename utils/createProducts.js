@@ -3,7 +3,8 @@ import { productSchema } from "../models/models.js"
 export const createProducts = () => {
   productSchema.deleteMany({},() => {})
   productSchema.countDocuments({}).exec((err,count) => {
-    if(count === 0){
+    if(count < 3){
+      productSchema.deleteMany(() => {})
       productSchema.create([
         {
           id:"price_1McDIDFbuSFlLnppYnVeZAr3",
@@ -27,7 +28,7 @@ export const createProducts = () => {
           description:"Premium subscription package",
         }
       ]);
-    }else if(count > 4){
+    }else if(count > 3){
       productSchema.deleteMany({},() => {});
       createProducts();
     }

@@ -3,6 +3,7 @@ import config from "config";
 
 export const createProduct = async (req, res) => {
   const configuration = new Configuration({
+    organization:config.get("ORGANIZATION"),
     apiKey: config.get("OPENAI_SECRET"),
   });
   const openai = new OpenAIApi(configuration);

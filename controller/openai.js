@@ -7,10 +7,10 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export const createProduct = async (req, res) => {
-  const { number, theme, ingredients, dish } = req.body;
+  const {  theme, dish } = req.body;
   const imageSize = `1024x1024`;
   const textPrompt = `Create a catchy description for the following restauraunt or foods based on the folling details. ingredients: ${ingredients} , theme: ${theme}, dish : ${dish}`;
-  const imagePrompt = `close up view from above of ${dish} with ingredients : ${ingredients} a ${theme} color theme with ${number} of ingredients against studio kitchen table + cinematic shot + up angle + shot with hasselblad + incredibly detailed, sharpen, details + dramatic lighting, + 50mm, 80mm, 100m + lightroom gallery + behance photographys + unsplash --q 2 --ar 3:2 --v 4 --uplight octane render hyper realestic --photo taken from canon eos r5 --hypererealestic --ultrareal --octanerender --cyclicrender ; superrealestic`;
+  const imagePrompt = `Create a stunning and professional top view image of the dish ${dish} that showcases its flavors and ingredients in a visually striking way, fitting the theme of ${theme}. Incorporate any relevant setting or props that highlight the dish's unique qualities, and use your creative license to capture the essence of the dish in your own style. Let your imagination and DALL-E's artistic`;
 
   try {
     const response = await openai.createImage({

@@ -7,7 +7,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export const createProduct = async (req, res) => {
-  const {  theme, dish } = req.body;
+  const { number, theme, ingredients, dish } = req.body;
   const imageSize = `1024x1024`;
   const textPrompt = `Create a catchy description for the following restauraunt or foods based on the folling details. ingredients: ${ingredients} , theme: ${theme}, dish : ${dish}`;
   const imagePrompt = `Create a stunning and professional top view image of the dish ${dish} that showcases its flavors and ingredients in a visually striking way, fitting the theme of ${theme}. Incorporate any relevant setting or props that highlight the dish's unique qualities, and use your creative license to capture the essence of the dish in your own style. Let your imagination and DALL-E's artistic`;

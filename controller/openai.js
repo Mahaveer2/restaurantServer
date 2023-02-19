@@ -1,15 +1,17 @@
 import { Configuration, OpenAIApi } from "openai";
 import config from "config";
 
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_SECRET,
+});
+const openai = new OpenAIApi(configuration);
+
 export const createProduct = async (req, res) => {
-  const configuration = new Configuration({
-    apiKey: config.get("OPENAI_SECRET"),
-  });
-  const openai = new OpenAIApi(configuration);
   const { number, theme, ingredients, dish } = req.body;
   const imageSize = `512x512`;
   const textPrompt = `Create a catchy description for the following restauraunt or foods based on the folling details. ingredients: ${ingredients} , theme: ${theme}, dish : ${dish}:`;
   const imagePrompt = `close up view from above of ${dish} with ingredients : ${ingredients} a ${theme} color theme with ${number} of ingredients against studio kitchen table + cinematic shot + up angle + shot with hasselblad + incredibly detailed, sharpen, details + dramatic lighting, + 50mm, 80mm, 100m + lightroom gallery + behance photographys + unsplash --q 2 --ar 3:2 --v 4 --uplight octane render`;
+
   try {
     const response = await openai.createImage({
       prompt: imagePrompt,

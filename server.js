@@ -6,6 +6,8 @@ import orderRoutes from "./routes/orderRoutes.js";
 import aiRoutes from "./routes/openai.routes.js";
 import { createProducts } from "./utils/createProducts.js";
 import config from "config";
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config()
 
 const app = express();
 

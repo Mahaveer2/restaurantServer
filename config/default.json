@@ -2,6 +2,5 @@
   "JWT_SECRET":"SECRET@!#skuy-#22@12@3123-thusismypasswordicebearlikes%icecream",
   "STRIPE_SECRET":"sk_test_51LAuimFbuSFlLnppTnha6HdHyx4mxIxYwClTjghda3eLEjGdEERkvC3ShefYcR4LsPWL1zv87zo8Mx3U5nJoNTn900Ka65jdx6",
   "WEBSITE":"https://therestaurantai.vercel.app/",
-  "DEV":false,
-  "OPENAI_SECRET":"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"
+  "DEV":true
 }

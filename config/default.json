@@ -3,6 +3,5 @@
   "STRIPE_SECRET":"sk_test_51LAuimFbuSFlLnppTnha6HdHyx4mxIxYwClTjghda3eLEjGdEERkvC3ShefYcR4LsPWL1zv87zo8Mx3U5nJoNTn900Ka65jdx6",
   "WEBSITE":"https://therestaurantai.vercel.app/",
   "DEV":false,
-  "ORGANIZATION":"org-NTKtyPCIP8cN9jvfyU7yBGma",
-  "OPENAI_SECRET":"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"
+  "OPENAI_SECRET":"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"
 }

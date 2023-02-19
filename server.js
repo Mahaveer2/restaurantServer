@@ -11,17 +11,6 @@ dotenv.config()
 
 const app = express();
 
-const whitelist = ['http://localhost:5173',config.get("WEBSITE")]
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error())
-    }
-  }
-}
-
 app.use(cors());
 app.use(express.json());
 app.use("/users",userRoutes);

@@ -9,8 +9,8 @@ const openai = new OpenAIApi(configuration);
 export const createProduct = async (req, res) => {
   const { number, theme, ingredients, dish } = req.body;
   const imageSize = `512x512`;
-  const textPrompt = `Create a catchy description for the following restauraunt or foods based on the folling details. ingredients: ${ingredients} , theme: ${theme}, dish : ${dish}:`;
-  const imagePrompt = `close up view from above of ${dish} with ingredients : ${ingredients} a ${theme} color theme with ${number} of ingredients against studio kitchen table + cinematic shot + up angle + shot with hasselblad + incredibly detailed, sharpen, details + dramatic lighting, + 50mm, 80mm, 100m + lightroom gallery + behance photographys + unsplash --q 2 --ar 3:2 --v 4 --uplight octane render`;
+  const textPrompt = `Create a catchy description for the following restauraunt or foods based on the folling details. ingredients: ${ingredients} , theme: ${theme}, dish : ${dish}`;
+  const imagePrompt = `close up view from above of ${dish} with ingredients : ${ingredients} a ${theme} color theme with ${number} of ingredients against studio kitchen table + cinematic shot + up angle + shot with hasselblad + incredibly detailed, sharpen, details + dramatic lighting, + 50mm, 80mm, 100m + lightroom gallery + behance photographys + unsplash --q 2 --ar 3:2 --v 4 --uplight octane render hyper realestic`;
 
   try {
     const response = await openai.createImage({

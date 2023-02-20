@@ -8,9 +8,9 @@ const openai = new OpenAIApi(configuration);
 
 export const createProduct = async (req, res) => {
   const { number, theme, ingredients, dish } = req.body;
-  const imageSize = `1024x1024`;
+  const imageSize = `512x512`;
   const textPrompt = `Create a catchy description for the following restauraunt or foods based on the folling details. ingredients: ${ingredients} , theme: ${theme}, dish : ${dish}`;
-  const imagePrompt = `Create a stunning and professional top view image of the dish ${dish} that showcases its flavors and ingredients in a visually striking way, fitting the theme of ${theme}. Incorporate any relevant setting or props that highlight the dish's unique qualities, and use your creative license to capture the essence of the dish in your own style. Let your imagination and DALL-E's artistic`;
+  const imagePrompt = `Create a stunning and professional top view image of the dish ${dish} that showcases its flavors and ingredients in a visually striking way, fitting a ${theme} theme should be realestic only the dish image should be neat and clean.`;
 
   try {
     const response = await openai.createImage({
